@@ -5,7 +5,8 @@ const app = express()
 app.use('/places', require('./controllers/places'))
 
 app.get('/', (req, res) => {
-    res.send('Hello world!')
+    res.send(`<h1>Hello world!</h1>
+    <img src="https://http.cat/200">`)
 })
 
 app.get('*', (req, res) => {
