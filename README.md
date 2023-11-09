@@ -4,6 +4,8 @@
 
 REST-Rant is an app where users can review restaurants.
 
+The data to be stored in places(restaurants) should have a name(string), city(string), cuisine(string) and a pic (string)
+
 ### Technologies Used (so far)
 
 - Node.js
