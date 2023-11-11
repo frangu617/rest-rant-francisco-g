@@ -1,18 +1,14 @@
-const React = require('react')
+const React = require("react");
 
-function Def(html){
-    return(
-        <html>
-            <head>
-                <title>Rest-Rant</title>
-            </head>
-            <body>
-                {html.children}
-            </body>
-        </html>
-    )
+function Def(html) {
+  return (
+    <html>
+      <head>
+        <title>Rest-Rant</title>
+      </head>
+      <body>{html.children}</body>
+    </html>
+  );
 }
 
-module.exports = {
-    Def
-}
+module.exports = Def;
