@@ -5,14 +5,14 @@ function home() {
   return (
     <Def>
       <main>
-        <h1>HOME</h1>
+        <h1>REST-Rant</h1>
         <div>
           <img
             src="/images/sam-moghadam-pancakes.jpg"
             alt="Pancake stack"
             width="500px"
           />
-          <div style={{marginBottom: "50px"}}>
+          <div style={{ marginBottom: "50px" }}>
             Photo by{" "}
             <a href="https://unsplash.com/@sammoghadamkhamseh">
               Sam Moghadam Khamseh
@@ -23,10 +23,12 @@ function home() {
             </a>{" "}
           </div>
         </div>
-        
-        <a href="/places">
-          <button className="btn btn-primary">Places Page</button>
-        </a>
+        <div>
+          <h2 style={{display:"inline"}}>Click here to go</h2>
+          <a href="/places">
+            <button className="btn btn-lg btn-primary ">Places!</button>
+          </a>
+        </div>
       </main>
     </Def>
   );
