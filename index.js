@@ -1,17 +1,18 @@
-//DEPENDENCIES
+//modules and globals
 const express = require('express')
-
-//CONFIGURATION
 require('dotenv').config()
 const app = express()
 
-//MIDDLEWARE
+//express settings
+app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
+app.use(express.static('public'))
 
+//controllers and routes
 app.use('/places', require('./controllers/places'))
 
-//ROUTES
+
 app.get('/', (req, res) => {
     res.render('home')
     // res.send(`<h1>Hello world!</h1>
@@ -22,5 +23,5 @@ app.get('*', (req, res) => {
     res.status(404).render(`error404`)
 })
 
-//LISTEN
+//LISTEN for connections
 app.listen(process.env.PORT)
