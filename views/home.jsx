@@ -4,27 +4,20 @@ const Def = require("./default");
 function home() {
   return (
     <Def>
-      <main>
+      <main className="home-main">
         <h1>REST-Rant</h1>
         <div>
           <img
-            src="/images/sam-moghadam-pancakes.jpg"
-            alt="Pancake stack"
+            src="/images/restaurant.png"
+            alt="AI restaurant Image"
             width="500px"
           />
-          <div style={{ marginBottom: "50px" }}>
-            Photo by{" "}
-            <a href="https://unsplash.com/@sammoghadamkhamseh">
-              Sam Moghadam Khamseh
-            </a>{" "}
-            on{" "}
-            <a href="https://images.unsplash.com/photo-1598214887283-1b96ceceea96?q=80&w=2565&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-              Unsplash
-            </a>{" "}
+          <div>
+            Photo by <a href="https://www.openai.com/">DALL·E by OpenAI</a>{" "}
           </div>
         </div>
         <div>
-          <h2 style={{display:"inline"}}>Click here to go</h2>
+          <h2 style={{ display: "inline" }}>Click here to go</h2>
           <a href="/places">
             <button className="btn btn-lg btn-primary ">Places!</button>
           </a>
