@@ -14,6 +14,19 @@ function Def(html) {
         <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/places">Places</a>
+            </li>
+            <li>
+              <a href="/places/new">Add Place</a>
+            </li>
+          </ul>
+        </nav>
         <div className="main-content">{html.children}</div>
         <footer className="footer">
           <div className="dropdown">
