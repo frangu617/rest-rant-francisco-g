@@ -12,6 +12,7 @@ function show({ place}) {
               alt={place.name}
               className="img-show"
             />
+            <h3>Located in {place.city}, {place.state}</h3>
           </div>
           <div className="col-sm-6">
             <h1>{place.name}</h1>
@@ -28,9 +29,11 @@ function show({ place}) {
             </p>
             <br />
             <h2>Description</h2>
-            <p>{place.cuisines}</p>
+            <h3>{place.showEstablished()}</h3>
+
+            <h4>Serving {place.cuisines}</h4>
             <br />
-            <h2>Located in</h2>
+            
             <p>
               {place.city}, {place.state}
             </p>

@@ -37,16 +37,28 @@ router.post("/", (req, res) => {
       res.redirect('/places');
     })
     .catch(err => {
-      console.log('err', err);
-      res.render("error404");
+      if (err && err.name == 'ValidationError') {
+        let message = 'Validation Error: ';
+        for (var field in err.errors) {
+          message += `${field} was ${err.errors[field].value}. `;
+          message += `${err.errors[field].message}`;
+        }
+        
+        res.render('places/new', { message })
+      }
+      else {
+        
+        res.render("error404");
+      }
     })
 });
 
 //UPDATE
 router.put(`/:id`, (req, res) => {
- 
-  db.Place.findById(req.params.id, req.body, { new: true })
-    .then(() => {
+
+  db.Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((updatedPlace) => {
+      console.log(updatedPlace);
       res.redirect(`/places/${req.params.id}`)
     })
     .catch(err => {
@@ -58,12 +70,12 @@ router.put(`/:id`, (req, res) => {
 
 //EDIT
 router.get("/:id/edit", (req, res) => {
-  db.Place.find(req.params.id._id)
-    .then(() => {
-      res.render("places/edit", { 
-        place: req.params.id,
-        
-       })
+  db.Place.findById(req.params.id)
+    .then((foundPlace) => {
+      res.render("places/edit", {
+        place: foundPlace,
+
+      })
     })
 
     .catch(err => {
@@ -74,10 +86,10 @@ router.get("/:id/edit", (req, res) => {
 
 //DELETE
 router.delete("/:id", (req, res) => {
-  
-  db.Place.deleteOne(req.params.id._id)
-    .then(() => {
-      res.redirect('/places')
+
+  db.Place.findByIdAndDelete(req.params.id)
+    .then((deletedPlace) => {
+      res.status(303).redirect('/places')
     })
     .catch(err => {
       console.log(err);
