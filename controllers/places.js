@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
           message += `${err.errors[field].message}`;
         }
         
-        res.render('places/new', { message })
+        res.render('places/new', { formData: req.body, message })
       }
       else {
         
