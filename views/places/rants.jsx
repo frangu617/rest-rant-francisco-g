@@ -36,7 +36,7 @@ function commentsForm({place}) {
               <label htmlFor="stars">Star Rating</label>
               <input
                 type="range"
-                className="form-control"
+                className="form-range"
                 id="stars"
                 name="stars"
                 min="0"
