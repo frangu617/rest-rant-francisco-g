@@ -4,6 +4,7 @@ function Def(html) {
   return (
     <html>
       <head>
+        
         <title>Rest-Rant</title>
         <link
           rel="stylesheet"
@@ -19,7 +20,7 @@ function Def(html) {
         <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>
-        <nav className="navbar sticky-top navbar-expand-lg navbar-primary bg-primary">
+        <nav className="navbar sticky-top navbar-expand-xl navbar-primary bg-primary">
           <button
             className="navbar-toggler"
             type="button"
@@ -29,7 +30,7 @@ function Def(html) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon">REST-Rant</span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">

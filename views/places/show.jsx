@@ -1,37 +1,34 @@
 const React = require("react");
 const Def = require("../default");
 
-function show({ place}) {
-  let comments = (
-    <h3 className='inactive'>
-      No comments yet!
-    </h3>
-  )
-    if (place.comments.length) {
-      comments = place.comments.map(c => {
-        return (
-          <div className="border">
-            <h2 className="rant">{c.rant ? 'Rant! ðŸ˜¡' : 'Rave! ðŸ˜»'}</h2>
-            <h4>{c.content}</h4>
-            <h3>
-              <stong>- {c.author}</stong>
-            </h3>
-            <h4>Rating: {c.stars}</h4>
-          </div>
-        )
-      })
-    }
+function show({ place }) {
+  let comments = <h3 className="inactive">No comments yet!</h3>;
+  
+  if (place.comments.length) {
+    comments = place.comments.map((c) => {
+      return (
+        <div className="border">
+          <h2 className="rant">
+            {c.rant ? `Rant! \u{1F621}` : `Rave! \u{1F60D}`}
+          </h2>
+          <h4>{c.content}</h4>
+          <h3>
+            <stong>- {c.author}</stong>
+          </h3>
+          <h4>Rating: {c.stars}</h4>
+        </div>
+      );
+    });
+  }
   return (
     <Def>
       <main className="show-main">
         <div className="row">
           <div className="col-sm-6">
-            <img
-              src={place.pic}
-              alt={place.name}
-              className="img-show"
-            />
-            <h3>Located in {place.city}, {place.state}</h3>
+            <img src={place.pic} alt={place.name} className="img-show" />
+            <h3>
+              Located in {place.city}, {place.state}
+            </h3>
           </div>
           <div className="col-sm-6">
             <h1>{place.name}</h1>
@@ -52,14 +49,25 @@ function show({ place}) {
 
             <h4>Serving {place.cuisines}</h4>
             <br />
-            
+
             <p>
               {place.city}, {place.state}
             </p>
             <div className="row">
               <div className="col">
-                <a href={`/places/${place.id}/edit`} className="btn btn-lg btn-warning">
+                <a
+                  href={`/places/${place.id}/edit`}
+                  className="btn btn-lg btn-warning"
+                >
                   Edit
+                </a>
+              </div>
+              <div className="col">
+                <a
+                  href={`/places/${place.id}/comment/new`}
+                  className="btn btn-lg btn-secondary"
+                >
+                  Add Comment
                 </a>
               </div>
               <div className="col">
