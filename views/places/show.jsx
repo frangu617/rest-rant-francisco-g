@@ -5,8 +5,11 @@ function show({ place }) {
   let comments = <h3 className="inactive">No comments yet!</h3>;
   
   if (place.comments.length) {
-    comments = place.comments.map((c) => {
+    comments = (
+    <div className='row'>
+    {place.comments.map((c, index) => {
       return (
+        <div key={index} className="col-md-4">
         <div className="border">
           <h2 className="rant">
             {c.rant ? `Rant! \u{1F621}` : `Rave! \u{1F60D}`}
@@ -17,8 +20,11 @@ function show({ place }) {
           </h3>
           <h4>Rating: {c.stars}</h4>
         </div>
-      );
-    });
+      </div>
+    )})
+    }
+    </div>
+    );
   }
   return (
     <Def>
@@ -86,8 +92,8 @@ function show({ place }) {
         <br />
         <div className="row">
           <h2>Comments</h2>
-          {comments}
-        </div>
+          </div>           
+          {comments}                 
       </main>
     </Def>
   );

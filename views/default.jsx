@@ -36,17 +36,17 @@ function Def(html) {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <a className="nav-link" href="/">
-                  Home
+                  <h3>REST-Rant</h3>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/places">
-                  Places
+                  <h3>Places</h3>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/places/new">
-                  Add Place
+                  <h3>Add Place</h3>
                 </a>
               </li>
             </ul>
