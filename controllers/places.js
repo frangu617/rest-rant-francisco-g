@@ -21,7 +21,9 @@ router.get("/new", (req, res) => {
 //SHOW
 router.get("/:id", (req, res) => {
   db.Place.findById(req.params.id)
+    .populate('comments')
     .then(place => {
+      console.log(place.comments)
       res.render("places/show", { place })
     })
     .catch(err => {
@@ -43,11 +45,11 @@ router.post("/", (req, res) => {
           message += `${field} was ${err.errors[field].value}. `;
           message += `${err.errors[field].message}`;
         }
-        
+
         res.render('places/new', { formData: req.body, message })
       }
       else {
-        
+
         res.render("error404");
       }
     })
