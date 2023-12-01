@@ -3,41 +3,47 @@ const Def = require("../default");
 
 function show({ place }) {
   let comments = <h3 className="inactive">No comments yet!</h3>;
-  let rating = (
-    <h3 className = "inactive">
-      Not yet rated
-    </h3>
-  )
-  
+  let rating = <h3 className="inactive">Not yet rated</h3>;
+
   if (place.comments.length) {
-    let sumRatings = place.comments.reduce((tot, c) =>{
-      return tot + c.stars
-    }, 0)
-    let averageRating = sumRatings / place.comments.length 
-    rating = (
-      <h3>
-        {Math.round (averageRating)} stars
-      </h3>
-    )
-    comments = (
-    <div className='row'>
-    {place.comments.map((c, index) => {
-      return (
-        <div key={index} className="col-md-4 md-4">
-        <div className="border">
-          <h2 className="rant">
-            {c.rant ? `Rant! \u{1F621}` : `Rave! \u{1F60D}`}
-          </h2>
-          <h4>{c.content}</h4>
-          <h3>
-            <stong>- {c.author}</stong>
-          </h3>
-          <h3>Rating: {c.stars}</h3>
-        </div>
-      </div>
-    )})
+    let sumRatings = place.comments.reduce((tot, c) => {
+      return tot + c.stars;
+    }, 0);
+    let averageRating = Math.round(sumRatings / place.comments.length);
+    let stars = "";
+    for (let i = 0; i < averageRating; i++) {
+      stars += "⭐";
     }
-    </div>
+    rating = <h3>{stars}</h3>;
+    comments = (
+      <div className="row">
+        {place.comments.map((c, index) => {
+          return (
+            <div key={index} className="col-md-4 md-4">
+              <div className="border">
+                <h2 className="rant">
+                  {c.rant ? `Rant! \u{1F621}` : `Rave! \u{1F60D}`}
+                </h2>
+                <h4>{c.content}</h4>
+                <h3>
+                  <stong>- {c.author}</stong>
+                </h3>
+                <h3>Rating: {c.stars}</h3>
+                <form
+                  method="POST"
+                  action={`/places/${place.id}/comment/${c.id}?_method=DELETE`}
+                >
+                  <input
+                    type="submit"
+                    className="btn btn-danger"
+                    value="Delete Comment"
+                  />
+                </form>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     );
   }
   return (
@@ -107,8 +113,8 @@ function show({ place }) {
         <br />
         <div className="row">
           <h2>Comments</h2>
-          </div>           
-          {comments}                 
+        </div>
+        {comments}
       </main>
     </Def>
   );

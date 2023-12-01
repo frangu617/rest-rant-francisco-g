@@ -159,4 +159,15 @@ router.delete("/:id", (req, res) => {
       res.redirect("/places");
     })
 })
+
+//DELETE COMMENT
+router.delete("/:id/comment/:cid", (req, res) =>{
+  db.Comment.findByIdAndDelete(req.params.cid)
+  .then((deletedComment) => {
+    res.status(303).redirect(`/places/${req.params.id}`)
+  })
+  .catch(err => {
+    res.redirect("/places")
+  })
+})
 module.exports = router;
