@@ -20,7 +20,7 @@ function Def(html) {
         <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>
-        <nav className="navbar sticky-top navbar-expand-xl navbar-primary bg-primary">
+        <nav className="navbar sticky-top navbar-expand-sm navbar-primary bg-primary">
           <button
             className="navbar-toggler"
             type="button"

@@ -3,13 +3,27 @@ const Def = require("../default");
 
 function show({ place }) {
   let comments = <h3 className="inactive">No comments yet!</h3>;
+  let rating = (
+    <h3 className = "inactive">
+      Not yet rated
+    </h3>
+  )
   
   if (place.comments.length) {
+    let sumRatings = place.comments.reduce((tot, c) =>{
+      return tot + c.stars
+    }, 0)
+    let averageRating = sumRatings / place.comments.length 
+    rating = (
+      <h3>
+        {Math.round (averageRating)} stars
+      </h3>
+    )
     comments = (
     <div className='row'>
     {place.comments.map((c, index) => {
       return (
-        <div key={index} className="col-md-4">
+        <div key={index} className="col-md-4 md-4">
         <div className="border">
           <h2 className="rant">
             {c.rant ? `Rant! \u{1F621}` : `Rave! \u{1F60D}`}
@@ -18,7 +32,7 @@ function show({ place }) {
           <h3>
             <stong>- {c.author}</stong>
           </h3>
-          <h4>Rating: {c.stars}</h4>
+          <h3>Rating: {c.stars}</h3>
         </div>
       </div>
     )})
@@ -39,6 +53,7 @@ function show({ place }) {
           <div className="col-sm-6">
             <h1>{place.name}</h1>
             <h2>Rating</h2>
+            {rating}
             <p>
               <div className="stars-outer">
                 <div
